@@ -1,0 +1,25 @@
+{
+  "name": "Quick Tab Reorder",
+  "description": "Move the active tab to the first position with a shortcut to pair with Cmd/Ctrl+1.",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "move-active-tab-first": {
+      "description": "Move active tab to first position",
+      "suggested_key": {
+        "default": "Ctrl+Shift+1",
+        "mac": "Command+Shift+1"
+      }
+    }
+  },
+  "action": {
+    "default_title": "Quick Tab Reorder"
+  }
+}
+
