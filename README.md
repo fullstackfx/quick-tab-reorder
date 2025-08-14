@@ -36,7 +36,7 @@ Chrome and Edge support loading extensions from a local folder for development a
   - Windows/Linux: `Ctrl+1`
 
 ### Customize the shortcuts
-- Chrome: open `chrome://extensions/shortcuts` and set the commands "Move active tab to position 1" … "position 5".
+- Chrome: open `chrome://extensions/shortcuts` and set the commands "Move active tab to position 1" … "position 4".
 - Edge: open `edge://extensions/shortcuts` and set the same commands.
 
 ## Permissions
@@ -44,7 +44,10 @@ Chrome and Edge support loading extensions from a local folder for development a
 
 ## How it works (high‑level)
 - A background service worker listens for a command.
-- When triggered, it finds the active tab in the focused window and moves it to index 0 via the Tabs API. Chrome/Edge enforce pinned/unpinned ordering; the extension respects that.
+- When triggered, it finds the active tab in the focused window and moves it to the requested position (1–4) within its group using the Tabs API:
+  - If the active tab is pinned, it moves to that position among pinned tabs.
+  - If unpinned, it moves to that position among unpinned tabs (right after all pinned tabs).
+  - Positions are clamped to available tabs to avoid errors.
 
 See `SPEC.md` for detailed behavior and manifest/logic design.
 
