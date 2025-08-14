@@ -8,7 +8,11 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.commands.onCommand.addListener(async (command) => {
-  if (command !== 'move-active-tab-first') return;
+  // Supported commands: move-active-tab-to-1 .. move-active-tab-to-4
+  const match = command.match(/^move-active-tab-to-([1-4])$/);
+  if (!match) return;
+
+  const requestedHumanPosition = Number(match[1]); // 1..5
 
   try {
     const [activeTab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
@@ -16,8 +20,20 @@ chrome.commands.onCommand.addListener(async (command) => {
 
     const windowTabs = await chrome.tabs.query({ windowId: activeTab.windowId });
     const pinnedCount = windowTabs.filter((t) => t.pinned).length;
+    const unpinnedCount = windowTabs.length - pinnedCount;
 
-    const targetIndex = activeTab.pinned ? 0 : pinnedCount;
+    // Determine the target index respecting pinned/unpinned partition
+    let targetIndex;
+    if (activeTab.pinned) {
+      // Position within pinned area
+      const positionWithinPinnedArea = Math.min(requestedHumanPosition, Math.max(pinnedCount, 1)) - 1; // clamp to 0..pinnedCount-1
+      targetIndex = positionWithinPinnedArea;
+    } else {
+      // Position within unpinned area (immediately after all pinned tabs)
+      const positionWithinUnpinnedArea = Math.min(requestedHumanPosition, Math.max(unpinnedCount, 1)) - 1; // 0-based within unpinned
+      targetIndex = pinnedCount + positionWithinUnpinnedArea;
+    }
+
     if (typeof activeTab.index === 'number' && activeTab.index === targetIndex) {
       return; // no-op if already at target
     }

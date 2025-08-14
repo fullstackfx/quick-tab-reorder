@@ -7,7 +7,9 @@ Move the current tab to the first position with a single keyboard shortcut so yo
 - **Zero mouse**: No dragging tabs, no searching by title.
 
 ## What it does
-- **Primary action**: On shortcut press (default: macOS `Command+Shift+1`, Windows/Linux `Ctrl+Shift+1`), the currently active tab is moved to the first position in its window.
+- **Primary actions**:
+  - Move active tab to position 1–4 using shortcuts (defaults below)
+  - Positions respect pinned/unpinned ordering
 - **Built‑in synergy**: Immediately use `Command+1` (macOS) or `Ctrl+1` (Windows/Linux) to jump back to this tab at any time.
 - **Pinned tabs**: If the active tab is pinned, it becomes the first pinned tab. If it is not pinned and there are pinned tabs, it becomes the first unpinned tab (right after all pinned tabs). This mirrors Chrome/Edge tab ordering rules.
 - **Per‑window**: Reordering happens within the current window only.
@@ -26,16 +28,16 @@ Chrome and Edge support loading extensions from a local folder for development a
 3. Click "Load unpacked" and select this project folder.
 
 ## Usage
-- Press the shortcut to move the active tab to the first position:
-  - macOS: `Command+Shift+1`
-  - Windows/Linux: `Ctrl+Shift+1`
+- Press a shortcut to move the active tab to positions 1–4:
+  - macOS: `Command+Shift+1` … `Command+Shift+4`
+  - Windows/Linux: `Ctrl+Shift+1` … `Ctrl+Shift+4`
 - Then use your browser's native shortcut to return to it at any time:
   - macOS: `Command+1`
   - Windows/Linux: `Ctrl+1`
 
-### Customize the shortcut
-- Chrome: open `chrome://extensions/shortcuts` and set "Move active tab to first position".
-- Edge: open `edge://extensions/shortcuts` and set the same command.
+### Customize the shortcuts
+- Chrome: open `chrome://extensions/shortcuts` and set the commands "Move active tab to position 1" … "position 5".
+- Edge: open `edge://extensions/shortcuts` and set the same commands.
 
 ## Permissions
 - `tabs`: Required to move the active tab within the current window.

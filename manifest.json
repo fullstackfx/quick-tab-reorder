@@ -10,11 +10,32 @@
     "service_worker": "background.js"
   },
   "commands": {
-    "move-active-tab-first": {
-      "description": "Move active tab to first position",
+    "move-active-tab-to-1": {
+      "description": "Move active tab to position 1 (first)",
       "suggested_key": {
         "default": "Ctrl+Shift+1",
         "mac": "Command+Shift+1"
+      }
+    },
+    "move-active-tab-to-2": {
+      "description": "Move active tab to position 2",
+      "suggested_key": {
+        "default": "Ctrl+Shift+2",
+        "mac": "Command+Shift+2"
+      }
+    },
+    "move-active-tab-to-3": {
+      "description": "Move active tab to position 3",
+      "suggested_key": {
+        "default": "Ctrl+Shift+3",
+        "mac": "Command+Shift+3"
+      }
+    },
+    "move-active-tab-to-4": {
+      "description": "Move active tab to position 4",
+      "suggested_key": {
+        "default": "Ctrl+Shift+4",
+        "mac": "Command+Shift+4"
       }
     }
   },
