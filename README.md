@@ -29,7 +29,7 @@ Chrome and Edge support loading extensions from a local folder for development a
 
 ## Usage
 - Press a shortcut to move the active tab to positions 1–4:
-  - macOS: `Command+Shift+1` … `Command+Shift+4`
+  - macOS: `Command+Ctrl+1` … `Command+Ctrl+4`
   - Windows/Linux: `Ctrl+Shift+1` … `Ctrl+Shift+4`
 - Then use your browser's native shortcut to return to it at any time:
   - macOS: `Command+1`
